@@ -255,7 +255,7 @@ const Gerador = () => {
       >
         Gerar DFD
       </button>
-      <h1 className="text-xl font-bold mb-4">**Gera em média de 50 itens**</h1>
+      <h1 className="text-xl font-bold mb-4">**Gera em média de 50 itens.**</h1>
 
     </div>
   );
