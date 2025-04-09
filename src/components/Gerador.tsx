@@ -69,18 +69,15 @@ const Gerador = () => {
             const worksheet = wb.getWorksheet(1);
 
             worksheet.getRow(17).height = 2.35;
-
-            worksheet.getCell("K4").value = capitalizeFirstLetter(formData.setor);
-            worksheet.getCell("K5").value = capitalizeFirstLetter(formData.responsavel);
+            worksheet.getCell("K4").value = formData.setor.toUpperCase();
+            worksheet.getCell("K5").value = formData.responsavel.toUpperCase();
             worksheet.getCell("C11").value = capitalizeFirstLetter(formData.objeto);
             worksheet.getCell("C14").value = capitalizeFirstLetter(formData.justificativa);
             worksheet.getCell("J16").value = capitalizeFirstLetter(formData.ficha);
-            worksheet.getCell("J59").value = capitalizeFirstLetter(formData.localEntrega);
+            worksheet.getCell("J59").value = formData.localEntrega.toUpperCase();
             worksheet.getCell("C53").value = "R$ " + formData.valorEstimado;
-
-            worksheet.getCell("F62").value = capitalizeFirstLetter(formData.responsavel);
-
-            worksheet.getCell("F63").value = capitalizeFirstLetter(formData.setor);
+            worksheet.getCell("F62").value = formData.responsavel.toUpperCase();
+            worksheet.getCell("F63").value = formData.setor.toUpperCase();
 
             const today = new Date();
             const day = today.getDate();
