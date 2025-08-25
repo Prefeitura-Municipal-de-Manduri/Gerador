@@ -241,14 +241,10 @@ const Gerador = () => {
         <Card>
           <CardHeader className="flex items-center justify-between">
             <CardTitle>Itens/Serviços</CardTitle>
-
-            
             <Button variant="outline" onClick={addItem} className="flex items-center space-x-2">
               <Plus className="h-4 w-4" />
               <span>Adicionar Item</span>
             </Button>
-
-
           </CardHeader>
           <CardContent className="space-y-4">
             {formData.itens.map((item, index) => (
@@ -265,19 +261,15 @@ const Gerador = () => {
                     onChange={(e) => handleChange(e, index)}
                   />
                 </div>
-
                 <div className="col-span-2">
-                    <Label>Unidade</Label>
-                    <select
-                      name="unidade"
-                      value={item.unidade}
-                      onChange={(e) => handleChange(e, index)}
-                      className="w-full border rounded-md px-2 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                    >
-                      <option value="Material">Material</option>
-                      <option value="Serviço">Serviço</option>
-                    </select>
-                  </div>
+                  <Label>Unidade</Label>
+                  <Input
+                    type="text"
+                    name="unidade"
+                    value={item.unidade}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </div>
                 <div className="col-span-8">
                   <Label>Descrição</Label>
                   <Input
