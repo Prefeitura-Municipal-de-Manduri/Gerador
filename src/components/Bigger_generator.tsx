@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { saveAs } from "file-saver";
 import * as ExcelJS from "exceljs";
 import { Plus, Trash2 } from "lucide-react";
+import { FileText } from "lucide-react";
 
 // Componentes UI (ShadCN-like)
 import {
@@ -147,14 +148,15 @@ const Gerador = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-4xl mx-auto space-y-6">
-        <Card>
-          <CardHeader className="bg-blue-800 text-white rounded-t-lg">
-            <CardTitle className="text-center text-2xl">
+
+        
+        <Card className="!bg-blue-800 !border-blue-800">
+          <CardHeader>
+            <CardTitle className="!text-white text-center text-2xl">
               Prefeitura Municipal de Manduri
             </CardTitle>
-            <p className="text-center text-sm">
-              DOCUMENTO DE FORMALIZAÇÃO DE DEMANDA - COMPRA DIRETA (Modelo Maior - 3 folhas)
-            </p>
+            <p className="!text-white text-center text-sm">
+              DOCUMENTO DE FORMALIZAÇÃO DE DEMANDA - COMPRA DIRETA  </p>
           </CardHeader>
         </Card>
 
@@ -171,6 +173,7 @@ const Gerador = () => {
                   id="responsavel"
                   name="responsavel"
                   value={formData.responsavel}
+                  placeholder="Nome do responsável do Setor"
                   onChange={handleChange}
                 />
               </div>
@@ -180,6 +183,7 @@ const Gerador = () => {
                   id="setor"
                   name="setor"
                   value={formData.setor}
+                  placeholder="Ex.: Departamento de Saúde"
                   onChange={handleChange}
                 />
               </div>
@@ -212,6 +216,7 @@ const Gerador = () => {
                   id="localEntrega"
                   name="localEntrega"
                   value={formData.localEntrega}
+                  placeholder="Endereço de entrega"
                   onChange={handleChange}
                 />
               </div>
@@ -221,15 +226,18 @@ const Gerador = () => {
                   id="ficha"
                   name="ficha"
                   value={formData.ficha}
+                  placeholder="Ficha orçamentária"
                   onChange={handleChange}
                 />
               </div>
               <div>
-                <Label htmlFor="valorEstimado">Valor Estimado</Label>
+                <Label htmlFor="valorEstimado">Valor Estimado  </Label>
                 <Input
                   id="valorEstimado"
                   name="valorEstimado"
                   value={formData.valorEstimado}
+                  placeholder="1500,00"
+
                   onChange={handleChange}
                 />
               </div>
@@ -305,11 +313,14 @@ const Gerador = () => {
 
         <div className="flex justify-center">
           <Button
-            className="bg-municipal text-white hover:bg-municipal/90 w-full max-w-sm"
+            className="bg-green-800 text-white hover:bg-green-700 px-6 py-3 flex items-center justify-center space-x-2 w-auto text-base"
             onClick={generateExcel}
           >
-            Gerar Excel
+            <FileText className="h-6 w-6" />
+            <span>Gerar DFD</span>
           </Button>
+
+     
         </div>
       </div>
     </div>

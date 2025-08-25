@@ -11,7 +11,7 @@ export function Label({ children, htmlFor, ...props }: LabelProps) {
   return (
     <label
       htmlFor={htmlFor}
-      className="block text-sm font-medium text-gray-700 mb-1"
+      className="block text-sm font-medium text-gray-800 mb-2 tracking-wide"
       {...props}
     >
       {children}

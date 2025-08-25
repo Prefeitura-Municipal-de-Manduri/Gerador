@@ -5,7 +5,7 @@ const Footer = () => {
       <footer className="bg-gray-800 text-white py-4 mt-8">
         <div className="max-w-screen-xl mx-auto text-center">
           <p className="text-sm">
-            Versão do sistema: 1.1.1 - 27/03/2025
+            Versão do sistema: 2.0.0 - 25/08/2025
           </p>
           <p className="text-sm">
             Desenvolvido por Marcelo - Departamento de TI/CPD
