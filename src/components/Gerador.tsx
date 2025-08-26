@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { saveAs } from "file-saver";
 import * as ExcelJS from "exceljs";
-import { Plus, Trash2 } from "lucide-react";
-import { FileText } from "lucide-react";
+import { Plus, Trash2, FileText } from "lucide-react";
 
 // Componentes UI (ShadCN-like)
 import {
@@ -18,8 +17,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
-
-
 const Gerador = () => {
   const [formData, setFormData] = useState({
     responsavel: "",
@@ -32,7 +29,10 @@ const Gerador = () => {
     itens: [{ quantidade: "", unidade: "Material", descricao: "" }],
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number | null = null) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    index: number | null = null
+  ) => {
     const { name, value } = e.target;
     if (index !== null) {
       const updatedItens = [...formData.itens];
@@ -91,12 +91,7 @@ const Gerador = () => {
             fitToHeight: 3,
             fitToWidth: 1,
             orientation: "portrait",
-            pageMargins: {
-              top: 0.5,
-              left: 0.5,
-              bottom: 0.5,
-              right: 0.5,
-            },
+            pageMargins: { top: 0.5, left: 0.5, bottom: 0.5, right: 0.5 },
           };
 
           worksheet.getRow(17).height = 2.35;
@@ -110,8 +105,6 @@ const Gerador = () => {
           worksheet.getCell("C88").value = "R$ " + formData.valorEstimado;
           worksheet.getCell("F97").value = formData.responsavel;
           worksheet.getCell("F98").value = formData.setor;
-
-
 
           const today = new Date();
           const day = today.getDate();
@@ -146,153 +139,154 @@ const Gerador = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 p-6 text-blue-800 text-lg">
       <div className="max-w-4xl mx-auto space-y-6">
 
-        
-        <Card className="!bg-blue-800 !border-blue-800">
+        {/* Topo do sistema */}
+        <Card className="!bg-blue-800 !border-blue-800 p-6">
           <CardHeader>
-            <CardTitle className="!text-white text-center text-2xl">
+            <CardTitle className="!text-white text-center text-3xl font-bold">
               Prefeitura Municipal de Manduri
             </CardTitle>
-            <p className="!text-white text-center text-sm">
-              DOCUMENTO DE FORMALIZAÇÃO DE DEMANDA - COMPRA DIRETA  </p>
+            <p className="!text-white text-center text-lg">
+              DOCUMENTO DE FORMALIZAÇÃO DE DEMANDA - COMPRA DIRETA
+            </p>
           </CardHeader>
         </Card>
 
         {/* Informações da Demanda */}
-        <Card>
+        <Card className="p-6">
           <CardHeader>
-            <CardTitle>Informações da Demanda</CardTitle>
+            <CardTitle className="text-2xl font-semibold">Informações da Demanda</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="responsavel">Responsável pela Demanda</Label>
+                <Label htmlFor="responsavel" className="text-lg font-medium">Responsável pela Demanda</Label>
                 <Input
                   id="responsavel"
                   name="responsavel"
                   value={formData.responsavel}
                   placeholder="Nome do responsável do Setor"
                   onChange={handleChange}
+                  className="text-lg px-3 py-2"
                 />
               </div>
               <div>
-                <Label htmlFor="setor">Setor</Label>
+                <Label htmlFor="setor" className="text-lg font-medium">Setor</Label>
                 <Input
                   id="setor"
                   name="setor"
                   value={formData.setor}
                   placeholder="Ex.: Departamento de Saúde"
                   onChange={handleChange}
+                  className="text-lg px-3 py-2"
                 />
               </div>
             </div>
 
             <div>
-              <Label htmlFor="objeto">Objeto da Futura Contratação</Label>
+              <Label htmlFor="objeto" className="text-lg font-medium">Objeto da Futura Contratação</Label>
               <Textarea
                 id="objeto"
                 name="objeto"
                 value={formData.objeto}
                 onChange={handleChange}
+                className="text-lg px-3 py-2"
               />
             </div>
 
             <div>
-              <Label htmlFor="justificativa">Justificativa da Necessidade</Label>
+              <Label htmlFor="justificativa" className="text-lg font-medium">Justificativa da Necessidade</Label>
               <Textarea
                 id="justificativa"
                 name="justificativa"
                 value={formData.justificativa}
                 onChange={handleChange}
+                className="text-lg px-3 py-2"
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <Label htmlFor="localEntrega">Local de Entrega</Label>
+                <Label htmlFor="localEntrega" className="text-lg font-medium">Local de Entrega</Label>
                 <Input
                   id="localEntrega"
                   name="localEntrega"
                   value={formData.localEntrega}
                   placeholder="Endereço de entrega"
                   onChange={handleChange}
+                  className="text-lg px-3 py-2"
                 />
               </div>
               <div>
-                <Label htmlFor="ficha">Ficha</Label>
+                <Label htmlFor="ficha" className="text-lg font-medium">Ficha</Label>
                 <Input
                   id="ficha"
                   name="ficha"
                   value={formData.ficha}
                   placeholder="Ficha orçamentária"
                   onChange={handleChange}
+                  className="text-lg px-3 py-2"
                 />
               </div>
               <div>
-                <Label htmlFor="valorEstimado">Valor Estimado  </Label>
+                <Label htmlFor="valorEstimado" className="text-lg font-medium">Valor Estimado</Label>
                 <Input
                   id="valorEstimado"
                   name="valorEstimado"
                   value={formData.valorEstimado}
                   placeholder="1500,00"
-
                   onChange={handleChange}
+                  className="text-lg px-3 py-2"
                 />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Itens */}
-        <Card>
+        {/* Itens/Serviços */}
+        <Card className="p-6">
           <CardHeader className="flex items-center justify-between">
-            <CardTitle>Itens/Serviços</CardTitle>
-
-            
+            <CardTitle className=" text-2xl font-semibold">Itens/Serviços</CardTitle>
             <Button variant="outline" onClick={addItem} className="flex items-center space-x-2">
-              <Plus className="h-4 w-4" />
+              <Plus className="h-5 w-5" />
               <span>Adicionar Item</span>
             </Button>
-
-
           </CardHeader>
           <CardContent className="space-y-4">
             {formData.itens.map((item, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-12 gap-2 items-end border-b border-gray-200 pb-2"
-              >
+              <div key={index} className="grid grid-cols-12 gap-2 items-end border-b border-gray-200 pb-2">
                 <div className="col-span-1">
-                  <Label>Qtd.</Label>
+                  <Label className="text-lg font-medium">Qtd.</Label>
                   <Input
                     type="text"
                     name="quantidade"
                     value={item.quantidade}
                     onChange={(e) => handleChange(e, index)}
+                    className="text-lg px-2 py-1"
                   />
                 </div>
-
                 <div className="col-span-2">
-                    <Label>Unidade</Label>
-                    <select
-                      name="unidade"
-                      value={item.unidade}
-                      onChange={(e) => handleChange(e, index)}
-                      className="w-full border rounded-md px-2 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                    >
-                      <option value="Material">Material</option>
-                      <option value="Serviço">Serviço</option>
-                    </select>
-                  </div>
+                  <Label className="text-lg font-medium">Unidade</Label>
+                  <select
+                    name="unidade"
+                    value={item.unidade}
+                    onChange={(e) => handleChange(e, index)}
+                    className="w-full border rounded-md px-2 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg"
+                  >
+                    <option value="Material">Material</option>
+                    <option value="Serviço">Serviço</option>
+                  </select>
+                </div>
                 <div className="col-span-8">
-                  <Label>Descrição</Label>
+                  <Label className="text-lg font-medium">Descrição</Label>
                   <Input
                     type="text"
                     name="descricao"
                     value={item.descricao}
                     onChange={(e) => handleChange(e, index)}
+                    className="text-lg px-2 py-1"
                   />
                 </div>
                 <div className="col-span-1 flex justify-end pt-6">
@@ -303,7 +297,7 @@ const Gerador = () => {
                     disabled={formData.itens.length === 1}
                     aria-label={`Remover item ${index + 1}`}
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-5 w-5" />
                   </Button>
                 </div>
               </div>
@@ -311,17 +305,17 @@ const Gerador = () => {
           </CardContent>
         </Card>
 
+        {/* Botão Gerar Excel */}
         <div className="flex justify-center">
           <Button
-            className="bg-green-800 text-white hover:bg-green-700 px-6 py-3 flex items-center justify-center space-x-2 w-auto text-base"
+            className="bg-green-800 text-white hover:bg-green-700 px-6 py-3 flex items-center justify-center space-x-2 w-auto text-lg"
             onClick={generateExcel}
           >
             <FileText className="h-6 w-6" />
             <span>Gerar DFD</span>
           </Button>
-
-     
         </div>
+
       </div>
     </div>
   );
